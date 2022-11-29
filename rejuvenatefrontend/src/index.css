@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "bignote";
+  src: url("./assets/fonts/bigtech.woff");
+}
+
+@font-face {
+    font-family: "Bigtech";
+    src: url("./assets/fonts/LouisVuitton-Medium.woff2");
+  }
+
+  @font-face {
+    font-family: "smalltech";
+    src: url("./assets/fonts/LouisVuitton-Light.woff2");
+  }
+
+  @font-face {
+    font-family: "lvreg";
+    src: url("./assets/fonts/LouisVuitton-Regular.woff2");
+  }
+
+  @font-face {
+    font-family: "lvbold";
+    src: url("./assets/fonts/LouisVuitton-Bold.woff2");
+  }
+
+
+  

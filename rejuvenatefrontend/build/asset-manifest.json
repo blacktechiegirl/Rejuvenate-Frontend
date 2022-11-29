@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e69a7186.css",
+    "main.js": "/static/js/main.e723b95f.js",
+    "static/media/photo1.jpg": "/static/media/photo1.2316699ee85f16af8e2d.jpg",
+    "static/media/proto15.png": "/static/media/proto15.2d68e07f0fc780dbae7a.png",
+    "static/media/acwell2.jpg": "/static/media/acwell2.4512b97ca715c2c04420.jpg",
+    "static/media/photo15.webp": "/static/media/photo15.2645a4eec6e04a3abe93.webp",
+    "static/media/photo14.jpg": "/static/media/photo14.847c10b4e0b7df77c67c.jpg",
+    "static/media/acwell1.jpg": "/static/media/acwell1.dff62708231d48934941.jpg",
+    "static/media/proto1.avif": "/static/media/proto1.ae95b66abb571c32238c.avif",
+    "static/media/photo5.avif": "/static/media/photo5.535b63391b95245dfdec.avif",
+    "static/media/photo2.avif": "/static/media/photo2.d2365488ede903f76fd5.avif",
+    "static/media/proto2.avif": "/static/media/proto2.accf59a41b17cd0baf9b.avif",
+    "static/media/bigtech.woff": "/static/media/bigtech.4a2c5eeb3ab64924ab01.woff",
+    "static/media/proto11.jpg": "/static/media/proto11.1b7ccad70964acab968d.jpg",
+    "static/media/proto3.jpg": "/static/media/proto3.ae5a00383fec11515c9a.jpg",
+    "static/media/photo11.jpg": "/static/media/photo11.36ccb86386172791a1d1.jpg",
+    "static/media/cerave1.webp": "/static/media/cerave1.5765b2dbb2a830ce6842.webp",
+    "static/media/LouisVuitton-Medium.woff2": "/static/media/LouisVuitton-Medium.7ee8299ec24012d43a69.woff2",
+    "static/media/LouisVuitton-Bold.woff2": "/static/media/LouisVuitton-Bold.a7cba19f356f99d320b9.woff2",
+    "static/media/LouisVuitton-Regular.woff2": "/static/media/LouisVuitton-Regular.433976c71b7588d584d9.woff2",
+    "static/media/LouisVuitton-Light.woff2": "/static/media/LouisVuitton-Light.4d712082949376444c77.woff2",
+    "static/media/photo4.avif": "/static/media/photo4.731456e05e223bdf889f.avif",
+    "static/media/photo3.avif": "/static/media/photo3.3fb2bc8483ed058ade83.avif",
+    "index.html": "/index.html",
+    "main.e69a7186.css.map": "/static/css/main.e69a7186.css.map",
+    "main.e723b95f.js.map": "/static/js/main.e723b95f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e69a7186.css",
+    "static/js/main.e723b95f.js"
+  ]
+}
