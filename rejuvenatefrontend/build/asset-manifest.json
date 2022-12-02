@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e69a7186.css",
-    "main.js": "/static/js/main.e723b95f.js",
+    "main.js": "/static/js/main.310263fe.js",
     "static/media/photo1.jpg": "/static/media/photo1.2316699ee85f16af8e2d.jpg",
     "static/media/proto15.png": "/static/media/proto15.2d68e07f0fc780dbae7a.png",
     "static/media/acwell2.jpg": "/static/media/acwell2.4512b97ca715c2c04420.jpg",
@@ -25,10 +25,10 @@
     "static/media/photo3.avif": "/static/media/photo3.3fb2bc8483ed058ade83.avif",
     "index.html": "/index.html",
     "main.e69a7186.css.map": "/static/css/main.e69a7186.css.map",
-    "main.e723b95f.js.map": "/static/js/main.e723b95f.js.map"
+    "main.310263fe.js.map": "/static/js/main.310263fe.js.map"
   },
   "entrypoints": [
     "static/css/main.e69a7186.css",
-    "static/js/main.e723b95f.js"
+    "static/js/main.310263fe.js"
   ]
 }

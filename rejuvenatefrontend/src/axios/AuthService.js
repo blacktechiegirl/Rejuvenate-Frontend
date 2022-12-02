@@ -7,32 +7,32 @@ export default class AccountService {
 
   getUploadUrl(imageName){
     return axios.get(
-      `http://localhost:3000/dev/s3url/${imageName}`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/s3url/${imageName}`,
     );
   }
 
   createProduct(userData) {
     return axios.post(
-        `http://localhost:3000/dev/product`,
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/product`,
       userData,
     );
   }
 
   getAllProducts() {
     return axios.get(
-      `http://localhost:3000/dev/product`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/product`,
     );
   }
 
   getProductById(id) {
     return axios.get(
-      `http://localhost:3000/dev/product/${id}`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/product/${id}`,
     );
   }
 
   getProductByCategory(category) {
     return axios.get(
-      `http://localhost:3000/dev/product/category/${category}`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/product/category/${category}`,
     );
   }
  
