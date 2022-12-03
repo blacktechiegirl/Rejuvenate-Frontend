@@ -16,6 +16,9 @@ const Catalogue = () => {
   const [buttonLoad, setButtonLoad] = useState(false);
   const [activeIndex, setActiveIndex] = useState(false);
 
+
+
+
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -85,6 +88,7 @@ const Catalogue = () => {
                         onClick={() => {
                           setActiveIndex(index);
                           setButtonLoad(true);
+                          navigate('/cart')
                         }}
                         className="mt-2 w-full  border border-[#d6a419] p-1 hover:bg-[#d6a419] hover:text-white duration-300 ease-out px-2"
                       >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Navbar/navbar";
 import Proto1 from "../../assets/photo1.jpg";
 import Proto2 from "../../assets/photo2.avif";
@@ -6,8 +6,19 @@ import Proto3 from "../../assets/photo3.avif";
 import Proto4 from "../../assets/photo4.avif";
 import Proto5 from "../../assets/photo5.avif";
 import Footer from "../Footer/footer";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    const token = localStorage.getItem('usertoken')
+    if(!token){
+      navigate('/login')
+    }
+  }, [])
+
+
   const CartItems = [
     {
       url: Proto1,

@@ -4,6 +4,9 @@ import InputField from "../../UI/InputField/inputfield";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import {LightCircularProgress} from "../../UI/CircularProgress/circularprogress";
+import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import userpool from "../Userpool/userpool";
+
 
 const ForgotPass = () => {
   const navigate = useNavigate();
@@ -14,6 +17,78 @@ const ForgotPass = () => {
   const [stage, setStage] = useState(1);
   const [code, setCode] = useState("");
   const [passToggle, setPassToggle] = useState(false);
+  
+  const toggleBtn = () => {
+    setPassToggle((prevState) => !prevState);
+  };
+
+  const cognitoUser = new CognitoUser({
+    Username: email,
+    Pool: userpool,
+  });
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    if (password == confirmPassword) {
+      cognitoUser.confirmPassword(code, password, {
+        onSuccess: function (data) {
+          // toast.success("Password Reset Successfully", {
+          //   position: toast.POSITION.TOP_CENTER,
+          // });
+          navigate("/");
+          setEmail("");
+          setConfirmPassword("");
+          setPassword("");
+        },
+        onFailure: function (err) {
+          // toast.error("Invalid verification code", {
+          //   position: toast.POSITION.TOP_CENTER,
+          // });
+          setLoading(false);
+          setEmail("");
+          setConfirmPassword("");
+          setPassword("");
+        },
+      });
+    } else {
+      // toast.error("Password does not match", {
+      //   position: toast.POSITION.TOP_CENTER,
+      // });
+      setLoading(false);
+      setEmail("");
+      setConfirmPassword("");
+      setPassword("");
+    }
+  };
+
+  const sendCode = (event) => {
+    setLoading(true);
+    event.preventDefault();
+    cognitoUser.forgotPassword({
+      onSuccess: function (data) {
+        // successfully initiated reset password request
+      },
+      onFailure: function (err) {
+        // toast.error(err.message, {
+        //   position: toast.POSITION.TOP_CENTER,
+        // });
+        setLoading(false);
+        setEmail("");
+      },
+      //Optional automatic callback
+      inputVerificationCode: function (data) {
+        setLoading(false);
+        setStage(2);
+
+  
+      },
+    });
+  };
+
+  
+  
+  
   return (
     <div className="bg-[#f6f5f3] h-[100vh]">
       <Navbar />
