@@ -30,11 +30,12 @@ const PageRoute = () => {
         <Route path="/reset/password" exact element={<ForgotPass />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
-        <Route path="/404" exact element={<Error404 />} />
         <Route path="/500" exact element={<Error500 />} />
         <Route path="/access/denied" exact element={<AccessDenied />} />
         <Route path="/details/:id" exact element={<ProductDetails />} />
         <Route path="/new/product" exact element={<CreateProduct />} />
+        <Route path="*" exact element={<Error404 />} />
+
 
       </Routes>
     </Router>
