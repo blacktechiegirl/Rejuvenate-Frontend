@@ -10,8 +10,7 @@ import { useNavigate } from "react-router-dom";
 import AccountService from "../../axios/AuthService";
 import Skeleton from "../UI/skeleton/circularprogress";
 import { AiFillDelete, AiFillMinusSquare } from "react-icons/ai";
-import {BsFillFileMinusFill, BsFillPlusSquareFill} from "react-icons/bs"
-
+import { BsFillFileMinusFill, BsFillPlusSquareFill } from "react-icons/bs";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Cart = () => {
       const response = await accountpath.deleteCartItem(cartId);
       if (response) {
         if (parseInt(response.status) === 200) {
-          console.log(response.data.message)
+          console.log(response.data.message);
           alert("Successfully removed item from cart");
         }
       }
@@ -33,14 +32,28 @@ const Cart = () => {
     }
   };
 
-  const changeQuantity = (params) => {
-    if (params === 'increase'){
-      
-    }else{
-
+  const changeQuantity = async (cartId, newQuantity) => {
+    
+    const userData = {
+      cartId,
+      newQuantity,
+    };
+    console.log(userData)
+    try {
+      const response = await accountpath.updateCartItem(userData);
+      if (response) {
+        if (parseInt(response.status) === 200) {
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+      }
+    } catch (err) {
+      alert(err);
+      console.log(err);
     }
+  };
 
-  }
+
 
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
@@ -97,6 +110,9 @@ const Cart = () => {
         </h1>
         {cartItems ? (
           <div className="w-full">
+            <div className="flex font-bigtech text-3xl justify-between my-4">
+              <p>Total:</p>
+              <p className="text-2xl border px-5 py-2">$2089</p></div>
             {cartItems.map((item) => {
               return (
                 <div className="grid grid-cols-10 gap-4 lg:gap-x-16 my-5 ">
@@ -130,14 +146,24 @@ const Cart = () => {
                         <p className="font-smalltech text-xl mr-4">Quantity:</p>
                         {/* <input type="button" value="-" class="text-3xl font-lvreg" /> */}
                         <div className="flex gap-6">
-                        <BsFillPlusSquareFill onClick={()=> changeQuantity('increase')}  className="text-[gray]"/>
-                        <input
-                          type="text"
-                          value={item.quantity}
-                          className="border w-8 text-sm  text-center"
-                        />
-                      <BsFillFileMinusFill onClick={()=> changeQuantity('decrease')} className="text-[gray]" />
-                      </div>
+                          <BsFillPlusSquareFill
+                            onClick={() =>
+                              changeQuantity(item.cartId, item.quantity + 1)
+                            }
+                            className="text-[gray]"
+                          />
+                          <input
+                            type="text"
+                            value={item.quantity}
+                            className="border w-8 text-sm  text-center"
+                          />
+                          <BsFillFileMinusFill
+                            onClick={() =>
+                              changeQuantity(item.cartId, item.quantity - 1)
+                            }
+                            className="text-[gray]"
+                          />
+                        </div>
                         {/* <input type="button" value="+" class="text-3xl font-lvreg" /> */}
                       </div>
                       <p className="text-xl sm:text-3xl text-black font-bigtech my-3">

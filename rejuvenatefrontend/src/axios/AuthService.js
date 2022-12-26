@@ -69,6 +69,13 @@ export default class AccountService {
     );
   }
 
+  updateCartItem(userData) {
+    return axios.put(
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart`,
+    userData,
+  );
+  }
+
   deleteWishlistItem(productId) {
     return axios.delete(
         `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/delete/${productId}`
