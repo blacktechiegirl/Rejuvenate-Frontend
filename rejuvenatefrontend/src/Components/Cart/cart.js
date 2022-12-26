@@ -81,17 +81,14 @@ const Cart = () => {
                       className=" h-[150px] w-[100px] md:h-[200px] md:w-full object-cover  "
                     />
                   </div>
-                  <div className="col-span-6 text-xl ">
-                    <p className="sm:text-3xl font-smalltech my-2">
-                      {item.name}
-                    </p>
+                  <div className="col-span-6 md:col-span-5 text-xl ">
                     <p className="text-md sm:text-2xl font-smalltech font-bold">
                       {item.productName}
                     </p>
                     
                     <div className="">
                     
-                      <div className="flex my-3 md:max-w-[600px] flex-wrap truncate">
+                      <div className="flex my-3 md:max-w-[600px] truncate">
                       <p className=" mr-2 font-smalltech text-sm uppercase font-bold ">Category:</p>
                       {item.category.map((cat)=> {
                         return(
@@ -116,7 +113,7 @@ const Cart = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-span-1 flex justify-end">
+                  <div className="col-span-1 md:col-span-2 flex justify-end">
                     <button className="hidden md:block bg-black p-2 text-center font-smalltech text-white relative w-full hover:font-bold h-10">
                       {" "}
                       Remove Item
