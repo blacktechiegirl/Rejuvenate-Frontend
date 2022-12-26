@@ -9,12 +9,27 @@ import Footer from "../Footer/footer";
 import { useNavigate } from "react-router-dom";
 import AccountService from "../../axios/AuthService";
 import Skeleton from "../UI/skeleton/circularprogress";
-import {AiFillDelete} from 'react-icons/ai'
+import { AiFillDelete } from "react-icons/ai";
 
 const Cart = () => {
   const navigate = useNavigate();
   const accountpath = new AccountService();
   const [cartItems, setCartItems] = useState([]);
+
+  const deleteProductFromCart = async (cartId) => {
+    try {
+      const response = await accountpath.deleteCartItem(cartId);
+      if (response) {
+        if (parseInt(response.status) === 200) {
+          console.log(response.data.message)
+          alert("Successfully removed item from cart");
+        }
+      }
+    } catch (err) {
+      alert(err);
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
@@ -85,19 +100,21 @@ const Cart = () => {
                     <p className="text-md sm:text-2xl font-smalltech font-bold truncate">
                       {item.productName}
                     </p>
-                    
-                    <div className="">
-                    
-                      <div className="flex my-3 md:max-w-[500px] truncate">
-                      <p className=" mr-2 font-smalltech text-sm uppercase font-bold ">Category:</p>
-                      {item.category.map((cat)=> {
-                        return(
-                          <p className=" uppercase font-smalltech text-sm mr-2">{cat}, </p>
 
-                        )
-                      })}
+                    <div className="">
+                      <div className="flex my-3 md:max-w-[500px] truncate">
+                        <p className=" mr-2 font-smalltech text-sm uppercase font-bold ">
+                          Category:
+                        </p>
+                        {item.category.map((cat) => {
+                          return (
+                            <p className=" uppercase font-smalltech text-sm mr-2">
+                              {cat},{" "}
+                            </p>
+                          );
+                        })}
                       </div>
-                      
+
                       <div class="quantity flex w-[20%] justify-between items-center">
                         <p className="font-smalltech text-xl">Quantity:</p>
                         {/* <input type="button" value="-" class="text-3xl font-lvreg" /> */}
@@ -113,12 +130,18 @@ const Cart = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-span-1 md:col-span-2 flex justify-end">
-                    <button className="hidden md:block bg-black p-2 text-center font-smalltech text-white relative w-full hover:font-bold h-10">
+                  <div className="col-span-1 md:col-span-2 flex justify-end cursor-pointer">
+                    <button
+                      onClick={() => deleteProductFromCart(item.cartId)}
+                      className="hidden md:block bg-black p-2 text-center font-smalltech text-white relative w-full hover:font-bold h-10"
+                    >
                       {" "}
                       Remove Item
                     </button>
-                    <AiFillDelete className="text-black md:hidden text-2xl"/>
+                    <AiFillDelete
+                      onClick={() => deleteProductFromCart(item.cartId)}
+                      className="text-black md:hidden text-2xl"
+                    />
                   </div>
                 </div>
               );

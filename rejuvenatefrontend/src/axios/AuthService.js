@@ -65,7 +65,7 @@ export default class AccountService {
 
   deleteCartItem(productId) {
     return axios.delete(
-        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/delete/${productId}`
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/${productId}`
     );
   }
 
