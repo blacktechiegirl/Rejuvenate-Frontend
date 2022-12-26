@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6373300a.css",
-    "main.js": "/static/js/main.aed5d46d.js",
+    "main.css": "/static/css/main.39abee28.css",
+    "main.js": "/static/js/main.aa6c4220.js",
     "static/media/photo1.jpg": "/static/media/photo1.2316699ee85f16af8e2d.jpg",
     "static/media/proto15.png": "/static/media/proto15.2d68e07f0fc780dbae7a.png",
     "static/media/acwell2.jpg": "/static/media/acwell2.4512b97ca715c2c04420.jpg",
@@ -24,11 +24,11 @@
     "static/media/photo4.avif": "/static/media/photo4.731456e05e223bdf889f.avif",
     "static/media/photo3.avif": "/static/media/photo3.3fb2bc8483ed058ade83.avif",
     "index.html": "/index.html",
-    "main.6373300a.css.map": "/static/css/main.6373300a.css.map",
-    "main.aed5d46d.js.map": "/static/js/main.aed5d46d.js.map"
+    "main.39abee28.css.map": "/static/css/main.39abee28.css.map",
+    "main.aa6c4220.js.map": "/static/js/main.aa6c4220.js.map"
   },
   "entrypoints": [
-    "static/css/main.6373300a.css",
-    "static/js/main.aed5d46d.js"
+    "static/css/main.39abee28.css",
+    "static/js/main.aa6c4220.js"
   ]
 }

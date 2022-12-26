@@ -82,13 +82,13 @@ const Cart = () => {
                     />
                   </div>
                   <div className="col-span-6 md:col-span-5 text-xl ">
-                    <p className="text-md sm:text-2xl font-smalltech font-bold">
+                    <p className="text-md sm:text-2xl font-smalltech font-bold truncate">
                       {item.productName}
                     </p>
                     
                     <div className="">
                     
-                      <div className="flex my-3 md:max-w-[600px] truncate">
+                      <div className="flex my-3 md:max-w-[500px] truncate">
                       <p className=" mr-2 font-smalltech text-sm uppercase font-bold ">Category:</p>
                       {item.category.map((cat)=> {
                         return(
