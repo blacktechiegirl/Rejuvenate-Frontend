@@ -3,6 +3,7 @@ import axios from "axios";
 export default class AccountService {
   constructor() {
     this.usertoken = localStorage.getItem("usertoken");
+    this.userid = localStorage.getItem("userId");
   }
 
   getUploadUrl(imageName){
@@ -38,13 +39,13 @@ export default class AccountService {
 
   getAllCartItems() {
     return axios.get(
-      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/items/${this.usertoken}`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/items/${this.userid}`,
     );
   }
 
   getAllWishlistItems() {
     return axios.get(
-      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/${this.usertoken}`,
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/${this.userid}`,
     );
   }
 

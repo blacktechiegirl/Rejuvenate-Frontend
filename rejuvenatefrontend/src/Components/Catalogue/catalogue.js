@@ -18,7 +18,7 @@ const Catalogue = () => {
 
 
   const isUserLoggedIn =async (id)=> {
-    const token = localStorage.getItem('usertoken')
+    const token = localStorage.getItem('userId')
     if (token){
       const userData = {
         userId: token,
