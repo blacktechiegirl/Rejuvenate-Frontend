@@ -9,7 +9,9 @@ import Footer from "../Footer/footer";
 import { useNavigate } from "react-router-dom";
 import AccountService from "../../axios/AuthService";
 import Skeleton from "../UI/skeleton/circularprogress";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiFillMinusSquare } from "react-icons/ai";
+import {BsFillFileMinusFill, BsFillPlusSquareFill} from "react-icons/bs"
+
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -30,6 +32,15 @@ const Cart = () => {
       console.log(err);
     }
   };
+
+  const changeQuantity = (params) => {
+    if (params === 'increase'){
+      
+    }else{
+
+    }
+
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
@@ -115,18 +126,22 @@ const Cart = () => {
                         })}
                       </div>
 
-                      <div class="quantity flex w-[20%] justify-between items-center">
-                        <p className="font-smalltech text-xl">Quantity:</p>
+                      <div class="quantity flex   items-center">
+                        <p className="font-smalltech text-xl mr-4">Quantity:</p>
                         {/* <input type="button" value="-" class="text-3xl font-lvreg" /> */}
+                        <div className="flex gap-6">
+                        <BsFillPlusSquareFill onClick={()=> changeQuantity('increase')}  className="text-[gray]"/>
                         <input
                           type="text"
                           value={item.quantity}
-                          className="border w-8 text-sm  text-center ml-2"
+                          className="border w-8 text-sm  text-center"
                         />
+                      <BsFillFileMinusFill onClick={()=> changeQuantity('decrease')} className="text-[gray]" />
+                      </div>
                         {/* <input type="button" value="+" class="text-3xl font-lvreg" /> */}
                       </div>
                       <p className="text-xl sm:text-3xl text-black font-bigtech my-3">
-                        ${item.price}
+                        ${parseInt(item.price) * parseInt(item.quantity)}
                       </p>
                     </div>
                   </div>
