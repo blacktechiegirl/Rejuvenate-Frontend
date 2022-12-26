@@ -110,6 +110,7 @@ const Category = () => {
   ];
 
   useEffect(() => {
+    console.log(id)
     async function fetchProducts() {
       try {
         const response = await accountpath.getProductByCategory(id);

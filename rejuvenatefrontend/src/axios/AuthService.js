@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class AccountService {
   constructor() {
-    this.idToken = localStorage.getItem("idToken");
+    this.usertoken = localStorage.getItem("usertoken");
   }
 
   getUploadUrl(imageName){
@@ -35,5 +35,44 @@ export default class AccountService {
       `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/product/category/${category}`,
     );
   }
+
+  getAllCartItems() {
+    return axios.get(
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/items/${this.usertoken}`,
+    );
+  }
+
+  getAllWishlistItems() {
+    return axios.get(
+      `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/${this.usertoken}`,
+    );
+  }
+
+  createCartItem(userData) {
+    return axios.post(
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart`,
+      userData,
+    );
+  }
+
+  createWishlistItem(userData) {
+    return axios.post(
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/add`,
+      userData,
+    );
+  }
+
+  deleteCartItem(productId) {
+    return axios.delete(
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/cart/delete/${productId}`
+    );
+  }
+
+  deleteWishlistItem(productId) {
+    return axios.delete(
+        `https://dzykro8nza.execute-api.us-east-1.amazonaws.com/dev/wishlist/delete/${productId}`
+    );
+  }
+ 
  
 }

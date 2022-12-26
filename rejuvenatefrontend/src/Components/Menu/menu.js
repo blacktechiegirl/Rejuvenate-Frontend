@@ -9,7 +9,7 @@ const Menu = () => {
     <div className=" absolute h-[100vh] top-[69px]  w-full md:w-[400px] bg-white font-smalltech duration-500 ease-in ">
       <p className="font-bigtech absolute right-5 top-2 cursor-pointer">X</p>
       <ul className="p-10">
-        <li className="py-4 px-5 hover:bg-slate-100 cursor-pointer" onClick={() => navigate('/category/face cleansers')}>Cleansers</li>
+        <li className="py-4 px-5 hover:bg-slate-100 cursor-pointer" onClick={() => navigate('/category/face cleansers')}>ME</li>
         <li className="py-4 px-5 hover:bg-slate-100 cursor-pointer" onClick={() => navigate('/category/moisturizers')}>Moisturizers</li>
         <li className="py-4 px-5 hover:bg-slate-100 cursor-pointer" onClick={() => navigate('/category/sunscreen')}>Sunscreen</li>
         <li className="py-4 px-5 hover:bg-slate-100 cursor-pointer" onClick={() => navigate('/category/eye care')}>Eye Care</li>

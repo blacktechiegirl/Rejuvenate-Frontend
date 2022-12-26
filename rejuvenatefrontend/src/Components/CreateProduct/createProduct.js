@@ -49,14 +49,14 @@ function CreateProduct() {
   };
 
   const options = [
-    { value: "clensers", label: "Face clensers" },
+    { value: "cleansers", label: "Face Clensers" },
     { value: "moisturizers", label: "Moisturizers" },
     { value: "sunscreen", label: "Sunscreen" },
     { value: "eye", label: "Eye Care" },
     { value: "lip", label: "Lip Care" },
     { value: "body", label: "Bath & Body" },
-    { value: "exfoilators", label: "Exfoilators" },
-    { value: "exfoilators", label: "Exfoilators" },
+    { value: "exfoliators", label: "Exfoilators" },
+    { value: "toners", label: "Toner" },
     { value: "acne", label: "Acne Products" },
   ];
 

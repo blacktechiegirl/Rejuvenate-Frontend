@@ -73,7 +73,7 @@ const Navbar = () => {
                 className="py-4 px-5 hover:bg-slate-100 cursor-pointer"
                 onClick={() => {
                   setShowMenu(false)
-                  navigate("/category/Body")}}
+                  navigate("/category/body")}}
               >
                 Bath & Body
               </li>

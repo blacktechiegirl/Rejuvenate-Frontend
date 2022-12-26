@@ -17,7 +17,31 @@ const Catalogue = () => {
   const [activeIndex, setActiveIndex] = useState(false);
 
 
+  const isUserLoggedIn =async (id)=> {
+    const token = localStorage.getItem('usertoken')
+    if (token){
+      const userData = {
+        userId: token,
+        productId: id,
+        quantity: 1
 
+      }
+      try {
+        const response = await accountpath.createCartItem(userData);
+        if (response) {
+          if (parseInt(response.status) === 200) {
+            alert('Successfully saved item to cart')
+          }
+        }
+      } catch (err) {
+         alert(err);
+         console.log(err)
+      }
+      
+    }else{
+      navigate('/')
+    }
+  }
 
   useEffect(() => {
     async function fetchProducts() {
@@ -55,7 +79,7 @@ const Catalogue = () => {
                   alt="..."
                 />{" "}
                 <div className="my-3">
-                  <p className="font-smalltech text-lg">{item.productName}</p>
+                  <p className="font-smalltech text-lg truncate">{item.productName}</p>
                   <div className="flex justify-between">
                     <p className="text-xl">${item.price}</p>
                     {mywish ? (
@@ -88,7 +112,7 @@ const Catalogue = () => {
                         onClick={() => {
                           setActiveIndex(index);
                           setButtonLoad(true);
-                          navigate('/cart')
+                          isUserLoggedIn(item.productId)
                         }}
                         className="mt-2 w-full  border border-[#d6a419] p-1 hover:bg-[#d6a419] hover:text-white duration-300 ease-out px-2"
                       >
