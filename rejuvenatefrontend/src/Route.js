@@ -15,6 +15,7 @@ import Error500 from "./Components/Error/Error500..js";
 import AccessDenied from "./Components/Error/AccessDenied.js";
 import ProductDetails from "./Components/ProductDetail/navbar.js";
 import CreateProduct from "./Components/CreateProduct/createProduct.js";
+import Checkout from "./Components/CheckOut/checkout.js";
 
 const PageRoute = () => {
   return (
@@ -35,6 +36,7 @@ const PageRoute = () => {
         <Route path="/details/:id" exact element={<ProductDetails />} />
         <Route path="/new/product" exact element={<CreateProduct />} />
         <Route path="*" exact element={<Error404 />} />
+        <Route path="/checkout" exact element={<Checkout />} />
 
 
       </Routes>

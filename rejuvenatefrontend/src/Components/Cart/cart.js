@@ -9,20 +9,56 @@ import Footer from "../Footer/footer";
 import { useNavigate } from "react-router-dom";
 import AccountService from "../../axios/AuthService";
 import Skeleton from "../UI/skeleton/circularprogress";
-import { AiFillDelete, AiFillMinusSquare } from "react-icons/ai";
+import { AiFillDelete, AiOutlineDelete } from "react-icons/ai";
 import { BsFillFileMinusFill, BsFillPlusSquareFill } from "react-icons/bs";
+import ProductCarousel from "../Landing copy/Carousel";
 
 const Cart = () => {
   const navigate = useNavigate();
   const accountpath = new AccountService();
   const [cartItems, setCartItems] = useState([]);
+  const [mytotal, setTotal] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  const Product = [
+    {
+      url1: Proto4,
+      url2: Proto5,
+      url3: Proto5,
+      name: " Glucose Face Cleanser",
+      price: 899,
+    },
+    {
+      url1: Proto3,
+      url2: Proto2,
+      url3: Proto1,
+      name: "Attono Face Toner",
+      price: 400,
+    },
+    {
+      url1: Proto2,
+      url2: Proto1,
+      url3: Proto3,
+      name: "Avocado Face oil",
+      price: 325,
+    },
+
+    {
+      url1: Proto4,
+      url2: Proto1,
+      url3: Proto3,
+      name: "Avocado Face oil",
+      price: 325,
+    },
+  ];
+
 
   const deleteProductFromCart = async (cartId) => {
     try {
       const response = await accountpath.deleteCartItem(cartId);
       if (response) {
         if (parseInt(response.status) === 200) {
-          console.log(response.data.message);
+          console.log(response.data.product);
           alert("Successfully removed item from cart");
         }
       }
@@ -55,6 +91,8 @@ const Cart = () => {
 
 
 
+
+
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
     if (!token) {
@@ -67,6 +105,8 @@ const Cart = () => {
           if (response) {
             if (parseInt(response.status) === 200) {
               setCartItems(response.data.cartitems);
+              setTotal(response.data.totalCost)
+              setTotalQuantity(response.data.totalQuantity)
             }
           }
         } catch (err) {
@@ -110,12 +150,12 @@ const Cart = () => {
         </h1>
         {cartItems ? (
           <div className="w-full">
-            <div className="flex font-bigtech text-3xl justify-between my-4">
-              <p>Total:</p>
-              <p className="text-2xl border px-5 py-2">$2089</p></div>
+            <div className="flex font-bigtech text-xl md:text-2xl justify-between my-4 mb-8">
+              <button className="text-[16px] font-smalltech border border-[#d6a419] hover:bg-[#d6a419] hover:text-white hover:py-1 ease-in transition-all py-1 px-4">Proceed to Checkout</button>
+              <p className=" ">Total : ${mytotal}</p></div>
             {cartItems.map((item) => {
               return (
-                <div className="grid grid-cols-10 gap-4 lg:gap-x-16 my-5 ">
+                <div className="grid grid-cols-10 gap-6 lg:gap-x-16 my-10 ">
                   <div className="col-span-3 sm:col-span-3">
                     <img
                       src={item.imageURL}
@@ -142,7 +182,7 @@ const Cart = () => {
                         })}
                       </div>
 
-                      <div class="quantity flex   items-center">
+                      <div class="quantity flex mb-1   items-center">
                         <p className="font-smalltech text-xl mr-4">Quantity:</p>
                         {/* <input type="button" value="-" class="text-3xl font-lvreg" /> */}
                         <div className="flex gap-6">
@@ -166,23 +206,32 @@ const Cart = () => {
                         </div>
                         {/* <input type="button" value="+" class="text-3xl font-lvreg" /> */}
                       </div>
-                      <p className="text-xl sm:text-3xl text-black font-bigtech my-3">
-                        ${parseInt(item.price) * parseInt(item.quantity)}
-                      </p>
+                      <p className="font-smalltech">price: ${item.price}</p>
+                      <div>
+                        <p className="mt-2">Subtotal:</p>
+                      </div>
+                     
                     </div>
                   </div>
-                  <div className="col-span-1 md:col-span-2 flex justify-end cursor-pointer">
-                    <button
+                  <div className="col-span-1 md:col-span-2  cursor-pointer">
+                    {/* <button
                       onClick={() => deleteProductFromCart(item.cartId)}
-                      className="hidden md:block bg-black p-2 text-center font-smalltech text-white relative w-full hover:font-bold h-10"
+                      className="hidden bg-black p-2 text-center font-smalltech text-white relative w-full hover:font-bold h-10"
                     >
                       {" "}
                       Remove Item
-                    </button>
-                    <AiFillDelete
+                    </button> */}
+                    <div className="flex justify-end">
+                    <AiOutlineDelete
                       onClick={() => deleteProductFromCart(item.cartId)}
-                      className="text-black md:hidden text-2xl"
+                      className="text-[#6b6a6a] text-2xl"
                     />
+                    </div>
+                    <div className="flex justify-end">
+                     <p className="text-xl text-black font-bigtech  mt-[110px]  text-center">
+                        ${parseInt(item.price) * parseInt(item.quantity)}
+                      </p>
+                      </div>
                   </div>
                 </div>
               );
@@ -191,6 +240,49 @@ const Cart = () => {
         ) : (
           <Skeleton />
         )}
+         <div className="mb-8 border-y p-2  font-smalltech ">
+          <div>
+            <p className="font-bigtech">CART SUMMARY</p>
+            <div className="flex justify-between my-3">
+              <p>Total Items in Cart</p>
+              <p>{totalQuantity}</p>
+            </div>
+           
+            <div className="flex justify-between my-3">
+              <p>Discount</p>
+              <p>0%</p>
+            </div>
+            <div className="flex justify-between my-3 ">
+              <p>Total Value of Cart</p>
+              <p className="font-bigtech text-2xl">${mytotal}</p>
+            </div>
+            <div className="flex justify-end mt-8 mb-4">
+              
+              <button className="bg-[#d6a419] text-white px-5 py-2 text-center h-10 text-[16px]">Proceed to Checkout</button> 
+            </div>
+          </div>
+        </div>
+        <div>
+        <p className="  mx-auto text-xl  pb-1 ">RELATED PRODUCTS</p>
+
+        <div class="mt-10 flex overflow-x-auto scrollbar-hide md:grid  md:grid-cols-2 lg:grid-cols-4 gap-6  mx-auto duration-700 ease-in ">
+          {Product.map((item) => {
+            return (
+              <div className="">
+                <ProductCarousel
+                  image1={item.url1}
+                  image2={item.url2}
+                  image3={item.url3}
+                />
+                <div className="my-3">
+                  <p className="font-smalltech text-lg">{item.name}</p>
+                  <p className="font-bigltech text-xl">${item.price}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
       </div>
       <Footer />
     </div>

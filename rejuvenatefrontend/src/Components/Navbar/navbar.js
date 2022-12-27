@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart, AiOutlineClose} from "react-icons/ai";
 import { VscMenu, VscWand } from "react-icons/vsc";
 import { CiSearch } from "react-icons/ci";
-import Menu from "../Menu/menu";
+import AccountService from "../../axios/AuthService";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
+  const accountpath = new AccountService();
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("usertoken");
+    if (!token) {
+      navigate("/login");
+    } else {
+      async function fetchProducts() {
+        try {
+          const response = await accountpath.getAllCartItems();
+          console.log(response);
+          if (response) {
+            if (parseInt(response.status) === 200) {        
+              localStorage.setItem("totalQuantity",response.data.totalQuantity)
+            }
+          }
+        } catch (err) {
+          alert(err);
+        }
+      }
+
+      fetchProducts();
+    }
+  }, []);
 
   return (
     <div className="fixed top-0 w-full border-b py-4 border-[#efebe8] font-smalltech bg-white z-[999] ">
@@ -155,11 +180,12 @@ const Navbar = () => {
             <h1 className="md: hidden lg:block">Wishlist</h1>
           </div>
           <div
-            className="flex ml-5  items-center cursor-pointer"
+            className="flex ml-5  items-center cursor-pointer relative"
             onClick={() => navigate("/cart")}
           >
-            <AiOutlineShoppingCart className="mr-1" />
-            <h1 className="md: hidden lg:block">Cart</h1>
+            <div className="bg-[black]  rounded-full absolute right-[-5px] lg:right-6 top-0 text-center text-white text-[9px] font-bold w-4 h-4">{localStorage.getItem('totalQuantity')}</div>
+            <AiOutlineShoppingCart className="mr-2" />
+            <h1 className="md: hidden lg:block">   Cart</h1>
           </div>
         </div>
       </div>
